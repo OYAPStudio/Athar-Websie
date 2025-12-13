@@ -1,0 +1,60 @@
+@font-face {
+    font-family: 'Displace 2.0';
+    src: url('Displace20-Light.eot');
+    src: local('Displace 2.0 Light'), local('Displace2.0-Light'),
+        url('Displace20-Light.eot?#iefix') format('embedded-opentype'),
+        url('Displace20-Light.woff2') format('woff2'),
+        url('Displace20-Light.woff') format('woff'),
+        url('Displace20-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Displace 2.0';
+    src: url('Displace20-Regular.eot');
+    src: local('Displace 2.0 Regular'), local('Displace2.0-Regular'),
+        url('Displace20-Regular.eot?#iefix') format('embedded-opentype'),
+        url('Displace20-Regular.woff2') format('woff2'),
+        url('Displace20-Regular.woff') format('woff'),
+        url('Displace20-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Displace 2.0';
+    src: url('Displace20-Black.eot');
+    src: local('Displace 2.0 Black'), local('Displace2.0-Black'),
+        url('Displace20-Black.eot?#iefix') format('embedded-opentype'),
+        url('Displace20-Black.woff2') format('woff2'),
+        url('Displace20-Black.woff') format('woff'),
+        url('Displace20-Black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Displace 2.0';
+    src: url('Displace20-Medium.eot');
+    src: local('Displace 2.0 Medium'), local('Displace2.0-Medium'),
+        url('Displace20-Medium.eot?#iefix') format('embedded-opentype'),
+        url('Displace20-Medium.woff2') format('woff2'),
+        url('Displace20-Medium.woff') format('woff'),
+        url('Displace20-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Displace 2.0';
+    src: url('Displace20-Bold.eot');
+    src: local('Displace 2.0 Bold'), local('Displace2.0-Bold'),
+        url('Displace20-Bold.eot?#iefix') format('embedded-opentype'),
+        url('Displace20-Bold.woff2') format('woff2'),
+        url('Displace20-Bold.woff') format('woff'),
+        url('Displace20-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
