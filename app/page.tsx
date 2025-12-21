@@ -1,10 +1,12 @@
 import Image from "next/image";
 import { ShaderAnimation } from "@/components/ui/shader-animation";
+import { SnowfallEffect } from "@/components/ui/snowfall-effect";
 
 export default function Home() {
   return (
     <div className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden">
       <ShaderAnimation />
+      <SnowfallEffect />
 
       {/* Glassmorphism Container */}
       <div className="relative z-10 mx-4 px-12 py-16 md:px-24 md:py-20 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl shadow-2xl">
