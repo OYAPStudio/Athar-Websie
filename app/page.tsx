@@ -1,46 +1,45 @@
-import Image from "next/image";
-import { ShaderAnimation } from "@/components/ui/shader-animation";
-import { SnowfallEffect } from "@/components/ui/snowfall-effect";
+import ResponsiveHeroBanner from "@/components/ui/responsive-hero-banner"
+import { AboutSection } from "@/components/ui/about-section"
+import { ServicesSection } from "@/components/ui/bento-grid-01"
+import { PortfolioSection } from "@/components/ui/project-showcase"
+import { ProcessSection } from "@/components/ui/radial-orbital-timeline"
+import { ContactSection } from "@/components/ui/contact-sections"
+import { Footer } from "@/components/ui/footer"
 
 export default function Home() {
   return (
-    <div className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden">
-      <ShaderAnimation />
-      <SnowfallEffect />
-
-      {/* Glassmorphism Container */}
-      <div className="relative z-10 mx-4 px-12 py-16 md:px-24 md:py-20 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-xl shadow-2xl">
-        <div className="flex flex-col items-center justify-center text-center">
-          {/* Logo with glow effect */}
-          <div className="relative mb-8">
-            <div className="absolute inset-0 blur-3xl bg-blue-500/30 rounded-full scale-150" />
-            <Image
-              src="/logo.png"
-              alt="Athar Logo"
-              width={140}
-              height={140}
-              priority
-              className="relative drop-shadow-2xl"
-            />
-          </div>
-
-          {/* Brand Name - Using Displace Font */}
-          <h1
-            className="mb-4 text-white text-[6rem] md:text-[10rem] leading-none font-black tracking-tight"
-            style={{ fontFamily: "Displace, sans-serif" }}
-          >
-            Athar
-          </h1>
-
-          {/* Coming Soon */}
-          <p
-            className="text-white/60 text-2xl md:text-4xl tracking-[0.2em] uppercase"
-            style={{ fontFamily: "Displace, sans-serif", fontWeight: 300 }}
-          >
-            Coming Soon
-          </p>
-        </div>
-      </div>
+    <div className="relative min-h-screen w-full">
+      <main>
+        <ResponsiveHeroBanner
+          logoUrl="/logo.png"
+          navLinks={[
+            { label: "Home", href: "#home", isActive: true },
+            { label: "About", href: "#about" },
+            { label: "Services", href: "#services" },
+            { label: "Portfolio", href: "#portfolio" },
+            { label: "Contact", href: "#contact" }
+          ]}
+          ctaButtonText="Get Started"
+          ctaButtonHref="#contact"
+          badgeLabel="Global Agency"
+          badgeText="Multi-Agency Solutions for Modern World"
+          title="We Build Digital"
+          titleLine2="Excellence"
+          description="From software development to cybersecurity, we deliver comprehensive digital solutions that drive your business forward. Transform your ideas into powerful digital experiences."
+          primaryButtonText="Our Services"
+          primaryButtonHref="#services"
+          secondaryButtonText="Contact Us"
+          secondaryButtonHref="#contact"
+          partnersTitle=""
+          partners={[]}
+        />
+        <AboutSection />
+        <ServicesSection />
+        <PortfolioSection />
+        <ProcessSection />
+        <ContactSection />
+      </main>
+      <Footer />
     </div>
-  );
+  )
 }
