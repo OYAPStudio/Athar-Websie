@@ -1,7 +1,6 @@
 "use client";
 import { TimelineContent } from "@/components/ui/timeline-animation";
 import { VerticalCutReveal } from "@/components/ui/vertical-cut-reveal";
-import { ArrowRight } from "lucide-react";
 import { useRef } from "react";
 
 export function AboutSection() {
@@ -37,10 +36,10 @@ export function AboutSection() {
     },
   };
   return (
-    <section id="about" className="py-8 px-4 bg-[#f9f9f9]" ref={heroRef}>
+    <section id="about" className="py-8 px-4 bg-[#0a1628] dark:bg-[#0a1628]" ref={heroRef}>
       <div className="max-w-6xl mx-auto">
         <div className="relative">
-          {/* Header with social icons */}
+          {/* Header */}
           <div className="flex justify-between items-center mb-8 w-[85%] absolute lg:top-4 md:top-0 sm:-top-2 -top-3 z-10">
             <div className="flex items-center gap-2 text-xl">
               <span className="text-cyan-500 animate-spin">✱</span>
@@ -49,61 +48,9 @@ export function AboutSection() {
                 animationNum={0}
                 timelineRef={heroRef}
                 customVariants={revealVariants}
-                className="text-sm font-medium text-gray-600"
+                className="text-sm font-medium text-gray-400"
               >
                 WHO WE ARE
-              </TimelineContent>
-            </div>
-            <div className="flex gap-4">
-              <TimelineContent
-                as="a"
-                animationNum={0}
-                timelineRef={heroRef}
-                customVariants={revealVariants}
-                href="https://www.facebook.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="md:w-8 md:h-8 sm:w-6 w-5 sm:h-6 h-5 border border-gray-200 bg-gray-100 rounded-lg flex items-center justify-center cursor-pointer hover:bg-cyan-50 hover:border-cyan-200 transition-colors"
-              >
-                <img src="https://pro-section.ui-layouts.com/facebook.svg" alt="fb" width={24} height={24} />
-              </TimelineContent>
-              <TimelineContent
-                as="a"
-                animationNum={1}
-                timelineRef={heroRef}
-                customVariants={revealVariants}
-                href="https://www.instagram.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="md:w-8 md:h-8 sm:w-6 w-5 sm:h-6 h-5 border border-gray-200 bg-gray-100 rounded-lg flex items-center justify-center cursor-pointer hover:bg-cyan-50 hover:border-cyan-200 transition-colors"
-              >
-                <img src="https://pro-section.ui-layouts.com/instagram.svg" alt="insta" width={24} height={24} />
-              </TimelineContent>
-              <TimelineContent
-                as="a"
-                animationNum={2}
-                timelineRef={heroRef}
-                customVariants={revealVariants}
-                href="https://www.linkedin.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="md:w-8 md:h-8 sm:w-6 w-5 sm:h-6 h-5 border border-gray-200 bg-gray-100 rounded-lg flex items-center justify-center cursor-pointer hover:bg-cyan-50 hover:border-cyan-200 transition-colors"
-              >
-                <img src="https://pro-section.ui-layouts.com/linkedin.svg" alt="linkedin" width={24} height={24} />
-              </TimelineContent>
-              <TimelineContent
-                as="a"
-                animationNum={3}
-                timelineRef={heroRef}
-                customVariants={revealVariants}
-                href="https://www.twitter.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="md:w-8 md:h-8 sm:w-6 w-5 sm:h-6 h-5 border border-gray-200 bg-gray-100 rounded-lg flex items-center justify-center cursor-pointer hover:bg-cyan-50 hover:border-cyan-200 transition-colors"
-              >
-                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                </svg>
               </TimelineContent>
             </div>
           </div>
@@ -153,12 +100,12 @@ export function AboutSection() {
             >
               <div className="flex items-center gap-2 mb-2 sm:text-base text-xs">
                 <span className="text-cyan-500 font-bold">5+</span>
-                <span className="text-gray-600">years of excellence</span>
-                <span className="text-gray-300">|</span>
+                <span className="text-gray-400">years of excellence</span>
+                <span className="text-gray-600">|</span>
               </div>
               <div className="flex items-center gap-2 mb-2 sm:text-base text-xs">
                 <span className="text-cyan-500 font-bold">200+</span>
-                <span className="text-gray-600">projects delivered</span>
+                <span className="text-gray-400">projects delivered</span>
               </div>
             </TimelineContent>
             <div className="lg:absolute right-0 bottom-16 flex lg:flex-col flex-row-reverse lg:gap-0 gap-4">
@@ -170,7 +117,7 @@ export function AboutSection() {
                 className="flex lg:text-4xl sm:text-3xl text-2xl items-center gap-2 mb-2"
               >
                 <span className="text-cyan-500 font-semibold">50+</span>
-                <span className="text-gray-600 uppercase">clients</span>
+                <span className="text-gray-400 uppercase">clients</span>
               </TimelineContent>
               <TimelineContent
                 as="div"
@@ -180,8 +127,8 @@ export function AboutSection() {
                 className="flex items-center gap-2 mb-2 sm:text-base text-xs"
               >
                 <span className="text-cyan-500 font-bold">98%</span>
-                <span className="text-gray-600">client satisfaction</span>
-                <span className="text-gray-300 lg:hidden block">|</span>
+                <span className="text-gray-400">client satisfaction</span>
+                <span className="text-gray-600 lg:hidden block">|</span>
               </TimelineContent>
             </div>
           </div>
@@ -189,7 +136,7 @@ export function AboutSection() {
         {/* Main Content */}
         <div className="grid md:grid-cols-3 gap-8">
           <div className="md:col-span-2">
-            <h1 className="sm:text-4xl md:text-5xl text-2xl !leading-[110%] font-semibold text-gray-900 mb-8">
+            <h1 className="sm:text-4xl md:text-5xl text-2xl !leading-[110%] font-semibold text-white mb-8">
               <VerticalCutReveal
                 splitBy="words"
                 staggerDuration={0.1}
@@ -211,7 +158,7 @@ export function AboutSection() {
               animationNum={9}
               timelineRef={heroRef}
               customVariants={revealVariants}
-              className="grid md:grid-cols-2 gap-8 text-gray-600"
+              className="grid md:grid-cols-2 gap-8 text-gray-400"
             >
               <TimelineContent
                 as="div"
@@ -258,31 +205,9 @@ export function AboutSection() {
                 animationNum={13}
                 timelineRef={heroRef}
                 customVariants={revealVariants}
-                className="text-gray-600 text-sm mb-8"
+                className="text-gray-400 text-sm mb-8"
               >
                 Multi-Agency Digital Solutions
-              </TimelineContent>
-
-              <TimelineContent
-                as="div"
-                animationNum={14}
-                timelineRef={heroRef}
-                customVariants={revealVariants}
-                className="mb-6"
-              >
-                <p className="text-gray-900 font-medium mb-4">
-                  Ready to transform your digital presence?
-                </p>
-              </TimelineContent>
-
-              <TimelineContent
-                as="button"
-                animationNum={15}
-                timelineRef={heroRef}
-                customVariants={revealVariants}
-                className="bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 shadow-lg shadow-cyan-500/30 border border-cyan-500/20 flex w-fit ml-auto gap-2 hover:gap-4 transition-all duration-300 ease-in-out text-white px-5 py-3 rounded-lg cursor-pointer font-semibold"
-              >
-                LET&apos;S COLLABORATE <ArrowRight className="" />
               </TimelineContent>
             </div>
           </div>
