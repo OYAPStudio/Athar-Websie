@@ -70,6 +70,7 @@ const ResponsiveHeroBanner: React.FC<ResponsiveHeroBannerProps> = ({
                 src={backgroundImageUrl}
                 alt=""
                 className="w-full h-full object-cover absolute top-0 right-0 bottom-0 left-0"
+                style={{ filter: 'hue-rotate(200deg) saturate(1.2)' }}
             />
             <div className="pointer-events-none absolute inset-0 ring-1 ring-black/30" />
 
@@ -135,7 +136,7 @@ const ResponsiveHeroBanner: React.FC<ResponsiveHeroBannerProps> = ({
                             </span>
                         </div>
 
-                        <h1 className="sm:text-5xl md:text-6xl lg:text-7xl leading-tight text-4xl text-white tracking-tight font-instrument-serif font-normal animate-fade-slide-in-2">
+                        <h1 className="sm:text-5xl md:text-6xl lg:text-7xl leading-tight text-4xl text-white tracking-tight font-displace font-medium animate-fade-slide-in-2">
                             {title}
                             <br className="hidden sm:block" />
                             {titleLine2}

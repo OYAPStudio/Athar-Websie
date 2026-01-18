@@ -252,6 +252,11 @@
   font-family: "Instrument Serif", Georgia, serif;
 }
 
+/* Displace font class */
+.font-displace {
+  font-family: 'Displace', sans-serif;
+}
+
 /* Selection styling */
 ::selection {
   background-color: hsl(var(--primary) / 0.2);
