@@ -1,148 +1,317 @@
 "use client"
 
-import { motion, useInView } from "framer-motion"
-import { useRef } from "react"
-import {
-  Code,
-  Globe,
-  Smartphone,
-  Palette,
-  Megaphone,
-  MessageSquare,
-  Shield,
-  Cloud,
-} from "lucide-react"
-import { cn } from "@/lib/utils"
+import React, { useState, useEffect } from "react"
+import { motion, AnimatePresence } from "framer-motion"
+import { Lock, Smartphone, Globe } from "lucide-react"
 
-const services = [
-  {
-    icon: Code,
-    title: "Software Development",
-    description:
-      "Custom software solutions tailored to your business needs. From enterprise applications to specialized tools.",
-    color: "from-blue-500/20 to-blue-600/20",
-    span: "lg:col-span-2",
-  },
-  {
-    icon: Globe,
-    title: "Web Design & Development",
-    description:
-      "Beautiful, responsive websites that convert visitors into customers.",
-    color: "from-purple-500/20 to-purple-600/20",
-    span: "",
-  },
-  {
-    icon: Smartphone,
-    title: "Mobile App Development",
-    description:
-      "Native and cross-platform mobile applications for iOS and Android.",
-    color: "from-green-500/20 to-green-600/20",
-    span: "",
-  },
-  {
-    icon: Palette,
-    title: "UI/UX Design",
-    description:
-      "User-centered design that creates intuitive and engaging experiences.",
-    color: "from-pink-500/20 to-pink-600/20",
-    span: "lg:col-span-2",
-  },
-  {
-    icon: Megaphone,
-    title: "Social Media Marketing",
-    description:
-      "Strategic social media campaigns that build brand awareness and engagement.",
-    color: "from-orange-500/20 to-orange-600/20",
-    span: "",
-  },
-  {
-    icon: MessageSquare,
-    title: "OTP & SMS Services",
-    description:
-      "Reliable OTP and SMS solutions for authentication and communication.",
-    color: "from-cyan-500/20 to-cyan-600/20",
-    span: "",
-  },
-  {
-    icon: Shield,
-    title: "Cybersecurity Solutions",
-    description:
-      "Comprehensive security services to protect your digital assets.",
-    color: "from-red-500/20 to-red-600/20",
-    span: "",
-  },
-  {
-    icon: Cloud,
-    title: "Cloud Solutions",
-    description:
-      "Scalable cloud infrastructure and migration services for modern businesses.",
-    color: "from-indigo-500/20 to-indigo-600/20",
-    span: "",
-  },
-]
+function TypeTester() {
+  const [scale, setScale] = useState(1)
 
-export function ServicesSection() {
-  const ref = useRef<HTMLDivElement>(null)
-  const isInView = useInView(ref, { once: true, margin: "-100px" })
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setScale((prev) => (prev === 1 ? 1.5 : 1))
+    }, 2000)
+    return () => clearInterval(interval)
+  }, [])
 
   return (
-    <section id="services" className="py-24">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div ref={ref} className="max-w-6xl mx-auto">
-          {/* Section Header */}
+    <div className="flex items-center justify-center h-full">
+      <motion.span
+        className="font-serif text-6xl md:text-8xl text-white font-medium"
+        animate={{ scale }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      >
+        Aa
+      </motion.span>
+    </div>
+  )
+}
+
+function LayoutAnimation() {
+  const [layout, setLayout] = useState(0)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setLayout((prev) => (prev + 1) % 3)
+    }, 2500)
+    return () => clearInterval(interval)
+  }, [])
+
+  const layouts = ["grid-cols-2", "grid-cols-3", "grid-cols-1"]
+
+  return (
+    <div className="h-full flex items-center justify-center">
+      <motion.div
+        className={`grid ${layouts[layout]} gap-1.5 w-full max-w-[140px] h-full`}
+        layout
+        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+      >
+        {[1, 2, 3].map((i) => (
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.5 }}
-            className="text-center mb-16"
-          >
-            <h2
-              className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4"
-              style={{ fontFamily: "Displace, sans-serif" }}
+            key={i}
+            className="bg-white/20 rounded-md h-5 w-full"
+            layout
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          />
+        ))}
+      </motion.div>
+    </div>
+  )
+}
+
+function SpeedIndicator() {
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    const timeout = setTimeout(() => setLoading(false), 500)
+    return () => clearTimeout(timeout)
+  }, [])
+
+  return (
+    <div className="flex flex-col items-center justify-center h-full gap-4">
+      <div className="h-10 flex items-center justify-center overflow-hidden relative w-full">
+        <AnimatePresence mode="wait">
+          {loading ? (
+            <motion.div
+              key="loader"
+              className="h-8 w-24 bg-white/10 rounded"
+              initial={{ opacity: 0.5 }}
+              animate={{ opacity: [0.4, 0.7, 0.4] }}
+              exit={{ opacity: 0, y: -20, position: 'absolute' }}
+              transition={{ duration: 1, repeat: Infinity }}
+            />
+          ) : (
+            <motion.span
+              key="text"
+              initial={{ y: 20, opacity: 0, filter: "blur(5px)" }}
+              animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
+              className="text-3xl md:text-4xl font-sans font-medium text-white"
             >
-              Our Services
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Comprehensive digital solutions to help your business thrive in the
-              modern world.
-            </p>
+              100ms
+            </motion.span>
+          )}
+        </AnimatePresence>
+      </div>
+      <span className="text-sm text-gray-400">Load Time</span>
+      <div className="w-full max-w-[120px] h-1.5 bg-white/10 rounded-full overflow-hidden">
+        <motion.div
+          className="h-full bg-white rounded-full"
+          initial={{ width: 0 }}
+          animate={{ width: loading ? 0 : "100%" }}
+          transition={{ type: "spring", stiffness: 100, damping: 15, mass: 1 }}
+        />
+      </div>
+    </div>
+  )
+}
+
+function SecurityBadge() {
+  const [shields, setShields] = useState([
+    { id: 1, active: false },
+    { id: 2, active: false },
+    { id: 3, active: false }
+  ])
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setShields(prev => {
+        const nextIndex = prev.findIndex(s => !s.active)
+        if (nextIndex === -1) {
+          return prev.map(() => ({ id: Math.random(), active: false }))
+        }
+        return prev.map((s, i) => i === nextIndex ? { ...s, active: true } : s)
+      })
+    }, 800)
+    return () => clearInterval(interval)
+  }, [])
+
+  return (
+    <div className="flex items-center justify-center h-full gap-2">
+      {shields.map((shield) => (
+        <motion.div
+          key={shield.id}
+          className={`w-12 h-12 rounded-lg flex items-center justify-center ${
+            shield.active ? 'bg-cyan-500/20' : 'bg-white/5'
+          }`}
+          animate={{ scale: shield.active ? 1.1 : 1 }}
+          transition={{ duration: 0.3 }}
+        >
+          <Lock className={`w-5 h-5 ${shield.active ? 'text-cyan-400' : 'text-gray-600'}`} />
+        </motion.div>
+      ))}
+    </div>
+  )
+}
+
+function GlobalNetwork() {
+  const [pulses] = useState([0, 1, 2, 3, 4])
+
+  return (
+    <div className="flex items-center justify-center h-full relative">
+      <Globe className="w-16 h-16 text-cyan-400 z-10" />
+      {pulses.map((pulse) => (
+        <motion.div
+          key={pulse}
+          className="absolute w-16 h-16 border-2 border-cyan-500/30 rounded-full"
+          initial={{ scale: 0.5, opacity: 1 }}
+          animate={{ scale: 3, opacity: 0 }}
+          transition={{
+            duration: 3,
+            repeat: Infinity,
+            delay: pulse * 0.8,
+            ease: "easeOut"
+          }}
+        />
+      ))}
+    </div>
+  )
+}
+
+export function ServicesSection() {
+  return (
+    <section id="services" className="bg-[#0a1628] px-6 py-24 min-h-screen flex items-center justify-center">
+      <div className="max-w-7xl w-full mx-auto">
+        <motion.p
+          className="text-cyan-400 text-sm uppercase tracking-widest mb-4"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+        >
+          Services
+        </motion.p>
+
+        <motion.h2
+          className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-12 font-displace"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.1 }}
+        >
+          What We Offer
+        </motion.h2>
+
+        {/* Bento Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-6 gap-4 auto-rows-[200px]">
+
+          {/* 1. Typography - Tall (2x2) */}
+          <motion.div
+            className="md:col-span-2 md:row-span-2 bg-[#0f2847] border border-cyan-900/30 rounded-xl p-8 flex flex-col hover:border-cyan-500/50 transition-colors cursor-pointer overflow-hidden"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            whileHover={{ scale: 1.02 }}
+          >
+            <div className="flex-1">
+              <TypeTester />
+            </div>
+            <div className="mt-4">
+              <h3 className="text-xl text-white font-medium font-displace">Typography</h3>
+              <p className="text-gray-400 text-sm mt-1">Beautiful, responsive type that scales perfectly.</p>
+            </div>
           </motion.div>
 
-          {/* Bento Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {services.map((service, index) => (
-              <motion.div
-                key={service.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                transition={{ duration: 0.5, delay: 0.1 * index }}
-                className={cn(
-                  "group relative overflow-hidden rounded-2xl border border-border/50 p-6",
-                  "bg-gradient-to-br",
-                  service.color,
-                  "hover:border-primary/50 hover:shadow-xl transition-all duration-300",
-                  service.span
-                )}
-              >
-                {/* Background pattern */}
-                <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" />
+          {/* 2. Layouts - Standard (2x1) */}
+          <motion.div
+            className="md:col-span-2 bg-[#0f2847] border border-cyan-900/30 rounded-xl p-8 flex flex-col hover:border-cyan-500/50 transition-colors cursor-pointer overflow-hidden"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            whileHover={{ scale: 0.98 }}
+          >
+            <div className="flex-1">
+              <LayoutAnimation />
+            </div>
+            <div className="mt-4">
+              <h3 className="text-xl text-white font-medium font-displace">Layouts</h3>
+              <p className="text-gray-400 text-sm mt-1">Flexible grids that adapt.</p>
+            </div>
+          </motion.div>
 
-                {/* Content */}
-                <div className="relative z-10">
-                  <service.icon className="h-10 w-10 text-primary mb-4 group-hover:scale-110 transition-transform duration-300" />
-                  <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
-                  <p className="text-muted-foreground text-sm">
-                    {service.description}
-                  </p>
-                </div>
+          {/* 3. Global Network - Tall (2x2) */}
+          <motion.div
+            className="md:col-span-2 md:row-span-2 bg-[#0f2847] border border-cyan-900/30 rounded-xl p-6 flex flex-col hover:border-cyan-500/50 transition-colors cursor-pointer overflow-hidden"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            whileHover={{ scale: 1.02, boxShadow: "0 25px 50px -12px rgba(0, 212, 255, 0.15)" }}
+          >
+            <div className="flex-1 flex items-center justify-center">
+              <div className="relative">
+                <GlobalNetwork />
+              </div>
+            </div>
+            <div className="mt-auto relative z-20 bg-[#0a1628]/50 backdrop-blur-sm rounded-lg p-2">
+              <h3 className="text-xl text-white flex items-center gap-2 font-medium font-displace">
+                <Globe className="w-5 h-5 text-cyan-400" />
+                Global CDN
+              </h3>
+              <p className="text-gray-400 text-sm mt-1">Lightning-fast content delivery worldwide with edge locations.</p>
+            </div>
+          </motion.div>
 
-                {/* Hover effect */}
-                <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </motion.div>
-            ))}
-          </div>
+          {/* 4. Speed - Standard (2x1) */}
+          <motion.div
+            className="md:col-span-2 bg-[#0f2847] border border-cyan-900/30 rounded-xl p-8 flex flex-col hover:border-cyan-500/50 transition-colors cursor-pointer overflow-hidden"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+            whileHover={{ scale: 0.98 }}
+          >
+            <div className="flex-1">
+              <SpeedIndicator />
+            </div>
+            <div className="mt-4">
+              <h3 className="text-xl text-white font-medium font-displace">Speed</h3>
+              <p className="text-gray-400 text-sm mt-1">Blazing fast performance.</p>
+            </div>
+          </motion.div>
+
+          {/* 5. Security - Wide (3x1) */}
+          <motion.div
+            className="md:col-span-3 bg-[#0f2847] border border-cyan-900/30 rounded-xl p-8 flex flex-col hover:border-cyan-500/50 transition-colors cursor-pointer overflow-hidden"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4 }}
+            whileHover={{ scale: 0.98 }}
+          >
+            <div className="flex-1">
+              <SecurityBadge />
+            </div>
+            <div className="mt-4">
+              <h3 className="text-xl text-white flex items-center gap-2 font-medium font-displace">
+                <Lock className="w-5 h-5 text-cyan-400" />
+                Security First
+              </h3>
+              <p className="text-gray-400 text-sm mt-1">Enterprise-grade encryption and data protection built-in.</p>
+            </div>
+          </motion.div>
+
+          {/* 6. Mobile Responsive - Wide (3x1) */}
+          <motion.div
+            className="md:col-span-3 bg-[#0f2847] border border-cyan-900/30 rounded-xl p-8 flex flex-col hover:border-cyan-500/50 transition-colors cursor-pointer overflow-hidden"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.5 }}
+            whileHover={{ scale: 0.98 }}
+          >
+            <div className="flex-1 flex items-center justify-center">
+              <Smartphone className="w-16 h-16 text-cyan-400" />
+            </div>
+            <div className="mt-4">
+              <h3 className="text-xl text-white font-medium font-displace">Mobile Ready</h3>
+              <p className="text-gray-400 text-sm mt-1">Optimized for all devices and screen sizes.</p>
+            </div>
+          </motion.div>
+
         </div>
       </div>
     </section>
   )
 }
+
+export default ServicesSection
