@@ -1,135 +1,295 @@
-"use client"
-
-import { motion, useInView } from "framer-motion"
-import { useRef } from "react"
-import { Target, Lightbulb, Users, Award } from "lucide-react"
-import { cn } from "@/lib/utils"
-
-const values = [
-  {
-    icon: Target,
-    title: "Mission-Driven",
-    description:
-      "We are committed to delivering exceptional digital solutions that empower businesses to thrive in the modern world.",
-  },
-  {
-    icon: Lightbulb,
-    title: "Innovation First",
-    description:
-      "We stay at the forefront of technology, constantly exploring new ways to solve complex challenges.",
-  },
-  {
-    icon: Users,
-    title: "Client-Centric",
-    description:
-      "Your success is our priority. We work closely with you to understand your needs and exceed expectations.",
-  },
-  {
-    icon: Award,
-    title: "Excellence",
-    description:
-      "We maintain the highest standards in everything we do, from code quality to customer service.",
-  },
-]
+"use client";
+import { TimelineContent } from "@/components/ui/timeline-animation";
+import { VerticalCutReveal } from "@/components/ui/vertical-cut-reveal";
+import { ArrowRight } from "lucide-react";
+import { useRef } from "react";
 
 export function AboutSection() {
-  const ref = useRef<HTMLDivElement>(null)
-  const isInView = useInView(ref, { once: true, margin: "-100px" })
-
+  const heroRef = useRef<HTMLDivElement>(null);
+  const revealVariants = {
+    visible: (i: number) => ({
+      y: 0,
+      opacity: 1,
+      filter: "blur(0px)",
+      transition: {
+        delay: i * 0.4,
+        duration: 0.5,
+      },
+    }),
+    hidden: {
+      filter: "blur(10px)",
+      y: -20,
+      opacity: 0,
+    },
+  };
+  const scaleVariants = {
+    visible: (i: number) => ({
+      opacity: 1,
+      filter: "blur(0px)",
+      transition: {
+        delay: i * 0.4,
+        duration: 0.5,
+      },
+    }),
+    hidden: {
+      filter: "blur(10px)",
+      opacity: 0,
+    },
+  };
   return (
-    <section id="about" className="py-24 bg-muted/30">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div ref={ref} className="max-w-6xl mx-auto">
-          {/* Section Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.5 }}
-            className="text-center mb-16"
-          >
-            <h2
-              className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4"
-              style={{ fontFamily: "Displace, sans-serif" }}
-            >
-              About Athar
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              We are a multi-agency company dedicated to providing comprehensive
-              digital solutions. Our team of experts combines creativity with
-              technical expertise to deliver results that matter.
-            </p>
-          </motion.div>
-
-          {/* Main Content */}
-          <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
-            {/* Left - Story */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-            >
-              <h3 className="text-2xl font-semibold mb-4">Our Story</h3>
-              <p className="text-muted-foreground mb-4">
-                Founded with a vision to bridge the gap between technology and
-                business success, Athar has grown into a trusted partner for
-                companies worldwide. We believe that great digital experiences
-                are built on a foundation of innovation, quality, and genuine
-                partnership.
-              </p>
-              <p className="text-muted-foreground">
-                Our diverse team brings together expertise across software
-                development, design, marketing, and cybersecurity. This unique
-                combination allows us to offer end-to-end solutions that address
-                every aspect of your digital presence.
-              </p>
-            </motion.div>
-
-            {/* Right - Image/Visual */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              className="relative"
-            >
-              <div className="aspect-square rounded-2xl bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
-                <div className="text-center p-8">
-                  <div
-                    className="text-6xl sm:text-8xl font-bold text-primary/20 mb-4"
-                    style={{ fontFamily: "Displace, sans-serif" }}
-                  >
-                    Athar
-                  </div>
-                  <p className="text-muted-foreground">
-                    Building Digital Excellence Since Day One
-                  </p>
-                </div>
-              </div>
-            </motion.div>
+    <section id="about" className="py-8 px-4 bg-[#f9f9f9]" ref={heroRef}>
+      <div className="max-w-6xl mx-auto">
+        <div className="relative">
+          {/* Header with social icons */}
+          <div className="flex justify-between items-center mb-8 w-[85%] absolute lg:top-4 md:top-0 sm:-top-2 -top-3 z-10">
+            <div className="flex items-center gap-2 text-xl">
+              <span className="text-cyan-500 animate-spin">✱</span>
+              <TimelineContent
+                as="span"
+                animationNum={0}
+                timelineRef={heroRef}
+                customVariants={revealVariants}
+                className="text-sm font-medium text-gray-600"
+              >
+                WHO WE ARE
+              </TimelineContent>
+            </div>
+            <div className="flex gap-4">
+              <TimelineContent
+                as="a"
+                animationNum={0}
+                timelineRef={heroRef}
+                customVariants={revealVariants}
+                href="https://www.facebook.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="md:w-8 md:h-8 sm:w-6 w-5 sm:h-6 h-5 border border-gray-200 bg-gray-100 rounded-lg flex items-center justify-center cursor-pointer hover:bg-cyan-50 hover:border-cyan-200 transition-colors"
+              >
+                <img src="https://pro-section.ui-layouts.com/facebook.svg" alt="fb" width={24} height={24} />
+              </TimelineContent>
+              <TimelineContent
+                as="a"
+                animationNum={1}
+                timelineRef={heroRef}
+                customVariants={revealVariants}
+                href="https://www.instagram.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="md:w-8 md:h-8 sm:w-6 w-5 sm:h-6 h-5 border border-gray-200 bg-gray-100 rounded-lg flex items-center justify-center cursor-pointer hover:bg-cyan-50 hover:border-cyan-200 transition-colors"
+              >
+                <img src="https://pro-section.ui-layouts.com/instagram.svg" alt="insta" width={24} height={24} />
+              </TimelineContent>
+              <TimelineContent
+                as="a"
+                animationNum={2}
+                timelineRef={heroRef}
+                customVariants={revealVariants}
+                href="https://www.linkedin.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="md:w-8 md:h-8 sm:w-6 w-5 sm:h-6 h-5 border border-gray-200 bg-gray-100 rounded-lg flex items-center justify-center cursor-pointer hover:bg-cyan-50 hover:border-cyan-200 transition-colors"
+              >
+                <img src="https://pro-section.ui-layouts.com/linkedin.svg" alt="linkedin" width={24} height={24} />
+              </TimelineContent>
+              <TimelineContent
+                as="a"
+                animationNum={3}
+                timelineRef={heroRef}
+                customVariants={revealVariants}
+                href="https://www.twitter.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="md:w-8 md:h-8 sm:w-6 w-5 sm:h-6 h-5 border border-gray-200 bg-gray-100 rounded-lg flex items-center justify-center cursor-pointer hover:bg-cyan-50 hover:border-cyan-200 transition-colors"
+              >
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+              </TimelineContent>
+            </div>
           </div>
 
-          {/* Values Grid */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {values.map((value, index) => (
-              <motion.div
-                key={value.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
-                className={cn(
-                  "p-6 rounded-xl bg-background border border-border/50",
-                  "hover:border-primary/50 hover:shadow-lg transition-all duration-300"
-                )}
+          <TimelineContent
+            as="figure"
+            animationNum={4}
+            timelineRef={heroRef}
+            customVariants={scaleVariants}
+            className="relative group"
+          >
+            <svg
+              className="w-full"
+              width={"100%"}
+              height={"100%"}
+              viewBox="0 0 100 40"
+            >
+              <defs>
+                <clipPath
+                  id="clip-inverted"
+                  clipPathUnits={"objectBoundingBox"}
+                >
+                  <path
+                    d="M0.0998072 1H0.422076H0.749756C0.767072 1 0.774207 0.961783 0.77561 0.942675V0.807325C0.777053 0.743631 0.791844 0.731953 0.799059 0.734076H0.969813C0.996268 0.730255 1.00088 0.693206 0.999875 0.675159V0.0700637C0.999875 0.0254777 0.985045 0.00477707 0.977629 0H0.902473C0.854975 0 0.890448 0.138535 0.850165 0.138535H0.0204424C0.00408849 0.142357 0 0.180467 0 0.199045V0.410828C0 0.449045 0.0136283 0.46603 0.0204424 0.469745H0.0523086C0.0696245 0.471019 0.0735527 0.497877 0.0733523 0.511146V0.915605C0.0723903 0.983121 0.090588 1 0.0998072 1Z"
+                    fill="#D9D9D9"
+                  />
+                </clipPath>
+              </defs>
+              <image
+                clipPath="url(#clip-inverted)"
+                preserveAspectRatio="xMidYMid slice"
+                width={"100%"}
+                height={"100%"}
+                xlinkHref="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&auto=format&fit=crop"
+              ></image>
+            </svg>
+          </TimelineContent>
+
+          {/* Stats */}
+          <div className="flex flex-wrap lg:justify-start justify-between items-center py-3 text-sm">
+            <TimelineContent
+              as="div"
+              animationNum={5}
+              timelineRef={heroRef}
+              customVariants={revealVariants}
+              className="flex gap-4"
+            >
+              <div className="flex items-center gap-2 mb-2 sm:text-base text-xs">
+                <span className="text-cyan-500 font-bold">5+</span>
+                <span className="text-gray-600">years of excellence</span>
+                <span className="text-gray-300">|</span>
+              </div>
+              <div className="flex items-center gap-2 mb-2 sm:text-base text-xs">
+                <span className="text-cyan-500 font-bold">200+</span>
+                <span className="text-gray-600">projects delivered</span>
+              </div>
+            </TimelineContent>
+            <div className="lg:absolute right-0 bottom-16 flex lg:flex-col flex-row-reverse lg:gap-0 gap-4">
+              <TimelineContent
+                as="div"
+                animationNum={6}
+                timelineRef={heroRef}
+                customVariants={revealVariants}
+                className="flex lg:text-4xl sm:text-3xl text-2xl items-center gap-2 mb-2"
               >
-                <value.icon className="h-10 w-10 text-primary mb-4" />
-                <h4 className="text-lg font-semibold mb-2">{value.title}</h4>
-                <p className="text-sm text-muted-foreground">
-                  {value.description}
+                <span className="text-cyan-500 font-semibold">50+</span>
+                <span className="text-gray-600 uppercase">clients</span>
+              </TimelineContent>
+              <TimelineContent
+                as="div"
+                animationNum={7}
+                timelineRef={heroRef}
+                customVariants={revealVariants}
+                className="flex items-center gap-2 mb-2 sm:text-base text-xs"
+              >
+                <span className="text-cyan-500 font-bold">98%</span>
+                <span className="text-gray-600">client satisfaction</span>
+                <span className="text-gray-300 lg:hidden block">|</span>
+              </TimelineContent>
+            </div>
+          </div>
+        </div>
+        {/* Main Content */}
+        <div className="grid md:grid-cols-3 gap-8">
+          <div className="md:col-span-2">
+            <h1 className="sm:text-4xl md:text-5xl text-2xl !leading-[110%] font-semibold text-gray-900 mb-8">
+              <VerticalCutReveal
+                splitBy="words"
+                staggerDuration={0.1}
+                staggerFrom="first"
+                reverse={true}
+                transition={{
+                  type: "spring",
+                  stiffness: 250,
+                  damping: 30,
+                  delay: 3,
+                }}
+              >
+                Building Digital Excellence That Drives Results.
+              </VerticalCutReveal>
+            </h1>
+
+            <TimelineContent
+              as="div"
+              animationNum={9}
+              timelineRef={heroRef}
+              customVariants={revealVariants}
+              className="grid md:grid-cols-2 gap-8 text-gray-600"
+            >
+              <TimelineContent
+                as="div"
+                animationNum={10}
+                timelineRef={heroRef}
+                customVariants={revealVariants}
+                className="sm:text-base text-xs"
+              >
+                <p className="leading-relaxed text-justify">
+                  Our journey began with a vision to bridge the gap between
+                  technology and business success. We specialize in transforming
+                  ideas into powerful digital solutions that help brands thrive.
                 </p>
-              </motion.div>
-            ))}
+              </TimelineContent>
+              <TimelineContent
+                as="div"
+                animationNum={11}
+                timelineRef={heroRef}
+                customVariants={revealVariants}
+                className="sm:text-base text-xs"
+              >
+                <p className="leading-relaxed text-justify">
+                  Every business has unique challenges, and we specialize in solving
+                  them with precision and innovation. By combining creativity with
+                  technical expertise, we deliver solutions that exceed expectations.
+                </p>
+              </TimelineContent>
+            </TimelineContent>
+          </div>
+
+          <div className="md:col-span-1">
+            <div className="text-right">
+              <TimelineContent
+                as="div"
+                animationNum={12}
+                timelineRef={heroRef}
+                customVariants={revealVariants}
+                className="text-cyan-500 text-2xl font-bold mb-2 font-displace"
+              >
+                ATHAR
+              </TimelineContent>
+              <TimelineContent
+                as="div"
+                animationNum={13}
+                timelineRef={heroRef}
+                customVariants={revealVariants}
+                className="text-gray-600 text-sm mb-8"
+              >
+                Multi-Agency Digital Solutions
+              </TimelineContent>
+
+              <TimelineContent
+                as="div"
+                animationNum={14}
+                timelineRef={heroRef}
+                customVariants={revealVariants}
+                className="mb-6"
+              >
+                <p className="text-gray-900 font-medium mb-4">
+                  Ready to transform your digital presence?
+                </p>
+              </TimelineContent>
+
+              <TimelineContent
+                as="button"
+                animationNum={15}
+                timelineRef={heroRef}
+                customVariants={revealVariants}
+                className="bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-700 hover:to-blue-700 shadow-lg shadow-cyan-500/30 border border-cyan-500/20 flex w-fit ml-auto gap-2 hover:gap-4 transition-all duration-300 ease-in-out text-white px-5 py-3 rounded-lg cursor-pointer font-semibold"
+              >
+                LET&apos;S COLLABORATE <ArrowRight className="" />
+              </TimelineContent>
+            </div>
           </div>
         </div>
       </div>
     </section>
-  )
+  );
 }
+
+export default AboutSection;

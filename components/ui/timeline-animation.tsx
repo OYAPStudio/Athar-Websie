@@ -1,7 +1,7 @@
 "use client"
 
-import { motion, useInView } from "framer-motion"
-import React, { useRef } from "react"
+import { motion, useInView, Variants } from "framer-motion"
+import React, { useRef, RefObject, ElementType, ComponentPropsWithoutRef } from "react"
 import { cn } from "@/lib/utils"
 
 interface TimelineItem {
@@ -71,3 +71,82 @@ export function TimelineAnimation({ items, className }: TimelineAnimationProps) 
     </div>
   )
 }
+
+// TimelineContent - Scroll-triggered animation wrapper component
+type TimelineContentProps<T extends ElementType = "div"> = {
+  as?: T
+  animationNum: number
+  timelineRef: RefObject<HTMLElement | null>
+  customVariants?: {
+    hidden: Variants["hidden"]
+    visible: (i: number) => Variants["visible"]
+  }
+  className?: string
+  children?: React.ReactNode
+} & Omit<ComponentPropsWithoutRef<T>, "as" | "animationNum" | "timelineRef" | "customVariants">
+
+const defaultVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 0.1,
+      duration: 0.5,
+    },
+  }),
+}
+
+export function TimelineContent<T extends ElementType = "div">({
+  as,
+  animationNum,
+  timelineRef,
+  customVariants = defaultVariants,
+  className,
+  children,
+  ...props
+}: TimelineContentProps<T>) {
+  const Component = as || "div"
+  const isInView = useInView(timelineRef, { once: true, margin: "-50px" })
+
+  return (
+    <motion.div
+      custom={animationNum}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+      variants={customVariants}
+      className={className}
+      {...(props as object)}
+      // @ts-expect-error - Dynamic component type
+      as={Component !== "div" ? undefined : undefined}
+    >
+      {Component === "div" ? (
+        children
+      ) : (
+        // @ts-expect-error - Dynamic component rendering
+        <Component {...props} className="">
+          {children}
+        </Component>
+      )}
+    </motion.div>
+  )
+}
+
+// Alternative simpler implementation that works better with different element types
+type TimelineContent2Props<T extends ElementType = "div"> = {
+  as?: T
+  animationNum: number
+  timelineRef: RefObject<HTMLElement | null>
+  customVariants?: {
+    hidden: Variants["hidden"]
+    visible: (i: number) => Variants["visible"]
+  }
+  className?: string
+  children?: React.ReactNode
+} & Omit<ComponentPropsWithoutRef<T>, "as" | "animationNum" | "timelineRef" | "customVariants">
+
+export const TimelineContentWrapper = motion.create("div")
+export const TimelineContentSpan = motion.create("span")
+export const TimelineContentFigure = motion.create("figure")
+export const TimelineContentButton = motion.create("button")
+export const TimelineContentAnchor = motion.create("a")
