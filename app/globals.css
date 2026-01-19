@@ -5,7 +5,7 @@
 @font-face {
   font-family: 'Displace';
   src: url('/Font/Displace20-Light.woff2') format('woff2'),
-       url('/Font/Displace20-Light.woff') format('woff');
+    url('/Font/Displace20-Light.woff') format('woff');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -14,7 +14,7 @@
 @font-face {
   font-family: 'Displace';
   src: url('/Font/Displace20-Regular.woff2') format('woff2'),
-       url('/Font/Displace20-Regular.woff') format('woff');
+    url('/Font/Displace20-Regular.woff') format('woff');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -23,7 +23,7 @@
 @font-face {
   font-family: 'Displace';
   src: url('/Font/Displace20-Medium.woff2') format('woff2'),
-       url('/Font/Displace20-Medium.woff') format('woff');
+    url('/Font/Displace20-Medium.woff') format('woff');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -32,7 +32,7 @@
 @font-face {
   font-family: 'Displace';
   src: url('/Font/Displace20-Bold.woff2') format('woff2'),
-       url('/Font/Displace20-Bold.woff') format('woff');
+    url('/Font/Displace20-Bold.woff') format('woff');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -41,7 +41,7 @@
 @font-face {
   font-family: 'Displace';
   src: url('/Font/Displace20-Black.woff2') format('woff2'),
-       url('/Font/Displace20-Black.woff') format('woff');
+    url('/Font/Displace20-Black.woff') format('woff');
   font-weight: 900;
   font-style: normal;
   font-display: swap;
@@ -167,9 +167,11 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
+
   html {
     scroll-behavior: auto;
   }
@@ -177,18 +179,24 @@
 
 /* Custom Animations */
 @keyframes float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-10px);
   }
 }
 
 @keyframes pulse-glow {
-  0%, 100% {
+
+  0%,
+  100% {
     box-shadow: 0 0 20px rgba(var(--primary), 0.3);
   }
+
   50% {
     box-shadow: 0 0 40px rgba(var(--primary), 0.5);
   }
@@ -198,9 +206,11 @@
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }
@@ -225,6 +235,7 @@
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -245,6 +256,16 @@
 
 .animate-fade-slide-in-4 {
   animation: fadeSlideIn 0.6s ease-out 0.4s both;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spin-slow {
+  animation: spin 20s linear infinite;
 }
 
 /* Instrument Serif font class */
