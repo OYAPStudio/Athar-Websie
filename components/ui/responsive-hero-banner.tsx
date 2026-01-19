@@ -70,7 +70,7 @@ const ResponsiveHeroBanner: React.FC<ResponsiveHeroBannerProps> = ({
                 src={backgroundImageUrl}
                 alt=""
                 className="w-full h-full object-cover absolute top-0 right-0 bottom-0 left-0"
-                style={{ filter: 'hue-rotate(200deg) saturate(1.2)' }}
+                style={{ filter: 'hue-rotate(195deg) saturate(1.2)' }}
             />
             <div className="pointer-events-none absolute inset-0 ring-1 ring-black/30" />
 

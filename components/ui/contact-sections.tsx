@@ -5,6 +5,7 @@ import { useRef, useState } from "react"
 import { Mail, Phone, MapPin, Send, Loader2 } from "lucide-react"
 import { Button } from "./button"
 import { cn } from "@/lib/utils"
+import { LocationMap } from "./expand-map"
 
 const contactInfo = [
   {
@@ -58,7 +59,7 @@ export function ContactSection() {
   }
 
   return (
-    <section id="contact" className="py-24 bg-muted/30">
+    <section id="contact" className="py-24 bg-[#0a1628]">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div ref={ref} className="max-w-6xl mx-auto">
           {/* Section Header */}
@@ -66,15 +67,15 @@ export function ContactSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.5 }}
-            className="text-center mb-16"
+            className="mb-16"
           >
-            <h2
-              className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4"
-              style={{ fontFamily: "Displace, sans-serif" }}
-            >
+            <p className="text-cyan-400 text-sm uppercase tracking-widest mb-4">
+              Contact
+            </p>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-white font-displace">
               Get In Touch
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg text-gray-400 max-w-2xl">
               Ready to start your project? We&apos;d love to hear from you. Send us
               a message and we&apos;ll respond as soon as possible.
             </p>
@@ -86,15 +87,15 @@ export function ContactSection() {
               initial={{ opacity: 0, x: -50 }}
               animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="p-8 rounded-2xl bg-background border border-border/50"
+              className="p-8 rounded-2xl bg-[#0f2847] border border-cyan-500/20"
             >
-              <h3 className="text-2xl font-semibold mb-6">Send us a message</h3>
+              <h3 className="text-2xl font-semibold mb-6 text-white font-displace">Send us a message</h3>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
                     <label
                       htmlFor="name"
-                      className="block text-sm font-medium mb-2"
+                      className="block text-sm font-medium mb-2 text-gray-300"
                     >
                       Name
                     </label>
@@ -106,9 +107,9 @@ export function ContactSection() {
                       onChange={handleChange}
                       required
                       className={cn(
-                        "w-full px-4 py-2 rounded-lg border border-input bg-background",
-                        "focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent",
-                        "placeholder:text-muted-foreground"
+                        "w-full px-4 py-2.5 rounded-lg border border-cyan-500/20 bg-[#0a1628] text-white",
+                        "focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50",
+                        "placeholder:text-gray-500"
                       )}
                       placeholder="Your name"
                     />
@@ -116,7 +117,7 @@ export function ContactSection() {
                   <div>
                     <label
                       htmlFor="email"
-                      className="block text-sm font-medium mb-2"
+                      className="block text-sm font-medium mb-2 text-gray-300"
                     >
                       Email
                     </label>
@@ -128,9 +129,9 @@ export function ContactSection() {
                       onChange={handleChange}
                       required
                       className={cn(
-                        "w-full px-4 py-2 rounded-lg border border-input bg-background",
-                        "focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent",
-                        "placeholder:text-muted-foreground"
+                        "w-full px-4 py-2.5 rounded-lg border border-cyan-500/20 bg-[#0a1628] text-white",
+                        "focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50",
+                        "placeholder:text-gray-500"
                       )}
                       placeholder="your@email.com"
                     />
@@ -139,7 +140,7 @@ export function ContactSection() {
                 <div>
                   <label
                     htmlFor="subject"
-                    className="block text-sm font-medium mb-2"
+                    className="block text-sm font-medium mb-2 text-gray-300"
                   >
                     Subject
                   </label>
@@ -151,9 +152,9 @@ export function ContactSection() {
                     onChange={handleChange}
                     required
                     className={cn(
-                      "w-full px-4 py-2 rounded-lg border border-input bg-background",
-                      "focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent",
-                      "placeholder:text-muted-foreground"
+                      "w-full px-4 py-2.5 rounded-lg border border-cyan-500/20 bg-[#0a1628] text-white",
+                      "focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50",
+                      "placeholder:text-gray-500"
                     )}
                     placeholder="How can we help?"
                   />
@@ -161,7 +162,7 @@ export function ContactSection() {
                 <div>
                   <label
                     htmlFor="message"
-                    className="block text-sm font-medium mb-2"
+                    className="block text-sm font-medium mb-2 text-gray-300"
                   >
                     Message
                   </label>
@@ -173,9 +174,9 @@ export function ContactSection() {
                     required
                     rows={5}
                     className={cn(
-                      "w-full px-4 py-2 rounded-lg border border-input bg-background resize-none",
-                      "focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent",
-                      "placeholder:text-muted-foreground"
+                      "w-full px-4 py-2.5 rounded-lg border border-cyan-500/20 bg-[#0a1628] text-white resize-none",
+                      "focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50",
+                      "placeholder:text-gray-500"
                     )}
                     placeholder="Tell us about your project..."
                   />
@@ -184,7 +185,7 @@ export function ContactSection() {
                   type="submit"
                   size="lg"
                   disabled={isSubmitting}
-                  className="w-full"
+                  className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white border-0"
                 >
                   {isSubmitting ? (
                     <>
@@ -215,47 +216,45 @@ export function ContactSection() {
                     key={info.label}
                     href={info.href}
                     className={cn(
-                      "flex items-center gap-4 p-4 rounded-xl bg-background border border-border/50",
-                      "hover:border-primary/50 hover:shadow-lg transition-all duration-300"
+                      "flex items-center gap-4 p-4 rounded-xl bg-[#0f2847] border border-cyan-500/20",
+                      "hover:border-cyan-500/50 hover:shadow-lg hover:shadow-cyan-500/10 transition-all duration-300"
                     )}
                   >
-                    <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
-                      <info.icon className="h-5 w-5 text-primary" />
+                    <div className="w-12 h-12 rounded-lg bg-cyan-500/10 flex items-center justify-center">
+                      <info.icon className="h-5 w-5 text-cyan-400" />
                     </div>
                     <div>
-                      <div className="text-sm text-muted-foreground">
+                      <div className="text-sm text-gray-400">
                         {info.label}
                       </div>
-                      <div className="font-medium">{info.value}</div>
+                      <div className="font-medium text-white">{info.value}</div>
                     </div>
                   </a>
                 ))}
               </div>
 
-              {/* Map Placeholder */}
-              <div className="rounded-2xl overflow-hidden border border-border/50 bg-muted/50 aspect-video flex items-center justify-center">
-                <div className="text-center text-muted-foreground">
-                  <MapPin className="h-12 w-12 mx-auto mb-2 opacity-50" />
-                  <p>Map will be displayed here</p>
-                  <p className="text-sm">123 Innovation Street, Tech City</p>
-                </div>
-              </div>
+              {/* Interactive Map */}
+              <LocationMap
+                location="123 Innovation Street, Tech City"
+                coordinates="40.7128° N, 74.0060° W"
+                className="w-full"
+              />
 
               {/* Office Hours */}
-              <div className="p-6 rounded-xl bg-background border border-border/50">
-                <h4 className="font-semibold mb-4">Office Hours</h4>
+              <div className="p-6 rounded-xl bg-[#0f2847] border border-cyan-500/20">
+                <h4 className="font-semibold mb-4 text-white font-displace">Office Hours</h4>
                 <div className="space-y-2 text-sm">
                   <div className="flex justify-between">
-                    <span className="text-muted-foreground">Monday - Friday</span>
-                    <span>9:00 AM - 6:00 PM</span>
+                    <span className="text-gray-400">Monday - Friday</span>
+                    <span className="text-white">9:00 AM - 6:00 PM</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-muted-foreground">Saturday</span>
-                    <span>10:00 AM - 4:00 PM</span>
+                    <span className="text-gray-400">Saturday</span>
+                    <span className="text-white">10:00 AM - 4:00 PM</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-muted-foreground">Sunday</span>
-                    <span>Closed</span>
+                    <span className="text-gray-400">Sunday</span>
+                    <span className="text-white">Closed</span>
                   </div>
                 </div>
               </div>
