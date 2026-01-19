@@ -1,203 +1,289 @@
 "use client"
 
-import { motion, useInView } from "framer-motion"
-import { useRef, useState } from "react"
-import { ExternalLink, Github } from "lucide-react"
+import React, { useState } from "react"
+import Image from "next/image"
+import { motion, AnimatePresence } from "framer-motion"
+import { Plus } from "lucide-react"
 import { Button } from "./button"
-import { Badge } from "./badge"
-import { cn } from "@/lib/utils"
 
-const projects = [
+interface Project {
+  id: number
+  title: string
+  subtitle: string
+  description: string
+  image: string
+  icon: React.ReactNode
+}
+
+const projects: Project[] = [
   {
     id: 1,
-    title: "E-Commerce Platform",
-    description:
-      "A full-featured e-commerce solution with real-time inventory, payment processing, and analytics dashboard.",
-    image: "/projects/ecommerce.png",
-    tags: ["Next.js", "Node.js", "PostgreSQL", "Stripe"],
-    category: "Web Development",
-    link: "#",
-    github: "#",
+    title: "E-COMMERCE",
+    subtitle: "PLATFORM",
+    description: "A full-featured e-commerce solution with real-time inventory, payment processing, and analytics dashboard for modern businesses.",
+    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&auto=format&fit=crop",
+    icon: (
+      <svg width="34px" height="34px" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 16V4H2V2h3a1 1 0 0 1 1 1v12h12.438l2-8H8V5h13.72a1 1 0 0 1 .97 1.243l-2.5 10a1 1 0 0 1-.97.757H5a1 1 0 0 1-1-1zm2 7a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm12 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/>
+      </svg>
+    ),
   },
   {
     id: 2,
-    title: "Healthcare Mobile App",
-    description:
-      "Patient management app with appointment scheduling, telemedicine, and health tracking features.",
-    image: "/projects/healthcare.png",
-    tags: ["React Native", "Firebase", "HIPAA Compliant"],
-    category: "Mobile Development",
-    link: "#",
-    github: "#",
+    title: "HEALTHCARE",
+    subtitle: "MOBILE APP",
+    description: "Patient management app with appointment scheduling, telemedicine, and health tracking features for seamless healthcare delivery.",
+    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&auto=format&fit=crop",
+    icon: (
+      <svg width="34px" height="34px" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 3v2H6v4l-2 2v9h16v-9l-2-2V5h-2V3H8zm-3 9.41l2-2V5h6v5.41l2 2V19H5v-6.59zM11 11h2v3h3v2h-3v3h-2v-3H8v-2h3v-3z"/>
+      </svg>
+    ),
   },
   {
     id: 3,
-    title: "Brand Identity System",
-    description:
-      "Complete brand identity package including logo, guidelines, and marketing materials for a tech startup.",
-    image: "/projects/branding.png",
-    tags: ["Figma", "Illustrator", "Brand Strategy"],
-    category: "UI/UX Design",
-    link: "#",
-    github: "#",
+    title: "BRAND",
+    subtitle: "IDENTITY",
+    description: "Complete brand identity package including logo, guidelines, and marketing materials for tech startups ready to make an impact.",
+    image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&auto=format&fit=crop",
+    icon: (
+      <svg width="34px" height="34px" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+      </svg>
+    ),
   },
   {
     id: 4,
-    title: "Security Audit Platform",
-    description:
-      "Automated security scanning and vulnerability assessment tool for enterprise applications.",
-    image: "/projects/security.png",
-    tags: ["Python", "Docker", "AWS", "Security"],
-    category: "Cybersecurity",
-    link: "#",
-    github: "#",
+    title: "SECURITY",
+    subtitle: "PLATFORM",
+    description: "Automated security scanning and vulnerability assessment tool for enterprise applications with real-time threat detection.",
+    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&auto=format&fit=crop",
+    icon: (
+      <svg width="34px" height="34px" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 1l9 4v6c0 5.55-3.84 10.74-9 12-5.16-1.26-9-6.45-9-12V5l9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/>
+      </svg>
+    ),
   },
   {
     id: 5,
-    title: "Marketing Campaign Dashboard",
-    description:
-      "Real-time analytics dashboard for tracking social media campaigns across multiple platforms.",
-    image: "/projects/marketing.png",
-    tags: ["React", "D3.js", "API Integration"],
-    category: "Marketing",
-    link: "#",
-    github: "#",
+    title: "MARKETING",
+    subtitle: "DASHBOARD",
+    description: "Real-time analytics dashboard for tracking social media campaigns across multiple platforms with actionable insights.",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop",
+    icon: (
+      <svg width="34px" height="34px" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3 3h18v18H3V3zm2 2v14h14V5H5zm2 2h2v10H7V7zm4 4h2v6h-2v-6zm4-2h2v8h-2V9z"/>
+      </svg>
+    ),
   },
   {
     id: 6,
-    title: "Cloud Migration Project",
-    description:
-      "Enterprise-scale migration from on-premise infrastructure to AWS cloud with zero downtime.",
-    image: "/projects/cloud.png",
-    tags: ["AWS", "Terraform", "Docker", "Kubernetes"],
-    category: "Cloud Solutions",
-    link: "#",
-    github: "#",
+    title: "CLOUD",
+    subtitle: "MIGRATION",
+    description: "Enterprise-scale migration from on-premise infrastructure to AWS cloud with zero downtime and enhanced scalability.",
+    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&auto=format&fit=crop",
+    icon: (
+      <svg width="34px" height="34px" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M17 7h-4V2H9v5H5l6 6 6-6zm-12 8v2h14v-2H5zm0 4v2h14v-2H5z"/>
+      </svg>
+    ),
   },
 ]
 
-const categories = [
-  "All",
-  "Web Development",
-  "Mobile Development",
-  "UI/UX Design",
-  "Cybersecurity",
-  "Marketing",
-  "Cloud Solutions",
-]
-
-export function PortfolioSection() {
-  const ref = useRef<HTMLDivElement>(null)
-  const isInView = useInView(ref, { once: true, margin: "-100px" })
-  const [activeCategory, setActiveCategory] = useState("All")
-
-  const filteredProjects =
-    activeCategory === "All"
-      ? projects
-      : projects.filter((project) => project.category === activeCategory)
+function ShowcaseCard({ project, index }: { project: Project; index: number }) {
+  const [isHovered, setIsHovered] = useState(false)
 
   return (
-    <section id="portfolio" className="py-24 bg-muted/30">
+    <motion.div
+      className="min-h-[55vh] w-full max-w-[320px] bg-[#0a1628]/80 backdrop-blur-sm rounded-3xl shadow-[0_35px_60px_-15px_rgba(0,0,0,0.5)] flex flex-col p-2 gap-2 overflow-hidden border border-cyan-500/20 mx-auto"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -20 }}
+      transition={{ duration: 0.3, ease: "easeOut", delay: index * 0.1 }}
+      whileHover={{
+        scale: 1.01,
+        boxShadow: "0 35px 60px -15px rgba(0,212,255,0.2)",
+        borderColor: "rgba(0,212,255,0.5)",
+      }}
+      onHoverStart={() => setIsHovered(true)}
+      onHoverEnd={() => setIsHovered(false)}
+    >
+      <motion.div
+        className="flex justify-between p-2 items-center"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.3 + index * 0.1, duration: 0.5 }}
+      >
+        <motion.div
+          className="text-cyan-400"
+          whileHover={{ rotate: 10, scale: 1.1 }}
+          transition={{ type: "spring", stiffness: 300 }}
+        >
+          {project.icon}
+        </motion.div>
+        <motion.div
+          className="w-10 h-10 bg-cyan-500 rounded-full flex items-center justify-center cursor-pointer"
+          whileHover={{
+            scale: 1.1,
+            backgroundColor: "#22d3ee",
+            boxShadow: "0 0 15px rgba(0, 212, 255, 0.7)",
+          }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            width="24"
+            height="24"
+            fill="none"
+            stroke="#0a1628"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M7 17L17 7" />
+            <path d="M7 7h10v10" />
+          </svg>
+        </motion.div>
+      </motion.div>
+      <div className="flex flex-col gap-4">
+        <motion.div
+          className="title text-4xl text-center font-bold bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent font-displace"
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5 + index * 0.1, duration: 0.6 }}
+        >
+          {project.title}
+          <br />
+          {project.subtitle}
+        </motion.div>
+        <motion.div
+          className="image relative"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.7 + index * 0.1, duration: 0.8 }}
+        >
+          <div className="absolute inset-0 rounded-2xl opacity-15 z-0">
+            <motion.div
+              animate={{ scale: isHovered ? 1.03 : 1 }}
+              transition={{ duration: 3, ease: "easeInOut" }}
+            >
+              <Image
+                src={project.image}
+                alt={`${project.title} Background`}
+                className="w-full h-full object-cover blur-sm scale-150 opacity-70"
+                width={500}
+                height={300}
+              />
+            </motion.div>
+          </div>
+          <motion.div
+            className="relative z-10 p-2"
+            whileHover={{ scale: 1.03 }}
+            transition={{ type: "easeInOut" }}
+          >
+            <Image
+              src={project.image}
+              alt={project.title}
+              className="rounded-2xl w-full h-full shadow-lg"
+              width={500}
+              height={300}
+            />
+          </motion.div>
+        </motion.div>
+        <motion.div
+          className="desc text-xs text-center max-w-72 mx-auto text-gray-400 font-light px-2 pb-4"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.9 + index * 0.1, duration: 0.7 }}
+        >
+          {project.description}
+        </motion.div>
+      </div>
+    </motion.div>
+  )
+}
+
+export function PortfolioSection() {
+  const [showAll, setShowAll] = useState(false)
+
+  const visibleProjects = showAll ? projects : projects.slice(0, 3)
+
+  return (
+    <section id="portfolio" className="py-24 bg-[#0a1628]">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div ref={ref} className="max-w-6xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           {/* Section Header */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center mb-12"
+            className="mb-16"
           >
-            <h2
-              className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4"
-              style={{ fontFamily: "Displace, sans-serif" }}
-            >
+            <p className="text-cyan-400 text-sm uppercase tracking-widest mb-4">
+              Portfolio
+            </p>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-white font-displace">
               Our Portfolio
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-lg text-gray-400 max-w-2xl">
               Explore our recent projects and see how we&apos;ve helped businesses
               achieve their digital goals.
             </p>
           </motion.div>
 
-          {/* Category Filter */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="flex flex-wrap justify-center gap-2 mb-12"
-          >
-            {categories.map((category) => (
-              <Button
-                key={category}
-                variant={activeCategory === category ? "default" : "outline"}
-                size="sm"
-                onClick={() => setActiveCategory(category)}
-                className="rounded-full"
-              >
-                {category}
-              </Button>
-            ))}
-          </motion.div>
-
           {/* Projects Grid */}
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredProjects.map((project, index) => (
-              <motion.div
-                key={project.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                transition={{ duration: 0.5, delay: 0.1 * index }}
-                layout
-                className={cn(
-                  "group relative overflow-hidden rounded-2xl border border-border/50 bg-background",
-                  "hover:border-primary/50 hover:shadow-xl transition-all duration-300"
-                )}
-              >
-                {/* Project Image Placeholder */}
-                <div className="aspect-video bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center">
-                  <div className="text-4xl font-bold text-primary/20">
-                    {project.id}
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div className="p-6">
-                  <Badge variant="secondary" className="mb-3">
-                    {project.category}
-                  </Badge>
-                  <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-                  <p className="text-sm text-muted-foreground mb-4">
-                    {project.description}
-                  </p>
-
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="text-xs px-2 py-1 rounded-full bg-muted text-muted-foreground"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* Actions */}
-                  <div className="flex gap-3">
-                    <Button size="sm" variant="outline" className="flex-1">
-                      <ExternalLink className="h-4 w-4 mr-2" />
-                      View
-                    </Button>
-                    <Button size="sm" variant="ghost">
-                      <Github className="h-4 w-4" />
-                    </Button>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            <AnimatePresence mode="popLayout">
+              {visibleProjects.map((project, index) => (
+                <ShowcaseCard key={project.id} project={project} index={index} />
+              ))}
+            </AnimatePresence>
           </div>
+
+          {/* Load More Button */}
+          {!showAll && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="flex justify-center"
+            >
+              <Button
+                onClick={() => setShowAll(true)}
+                size="lg"
+                className="bg-transparent border-2 border-cyan-500/50 text-cyan-400 hover:bg-cyan-500/10 hover:border-cyan-500 transition-all duration-300 group"
+              >
+                <Plus className="w-5 h-5 mr-2 group-hover:rotate-90 transition-transform duration-300" />
+                Load More Projects
+              </Button>
+            </motion.div>
+          )}
+
+          {/* Show Less Button */}
+          {showAll && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="flex justify-center"
+            >
+              <Button
+                onClick={() => setShowAll(false)}
+                size="lg"
+                variant="ghost"
+                className="text-gray-400 hover:text-cyan-400 transition-colors"
+              >
+                Show Less
+              </Button>
+            </motion.div>
+          )}
         </div>
       </div>
     </section>
   )
 }
+
+export default PortfolioSection
