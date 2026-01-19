@@ -1,5 +1,6 @@
 import ResponsiveHeroBanner from "@/components/ui/responsive-hero-banner"
 import { AboutSection } from "@/components/ui/about-section"
+import { ClientsSection } from "@/components/ui/clients-section"
 import { ServicesSection } from "@/components/ui/bento-grid-01"
 import { PortfolioSection } from "@/components/ui/project-showcase"
 import { ProcessSection } from "@/components/ui/radial-orbital-timeline"
@@ -34,6 +35,7 @@ export default function Home() {
           partners={[]}
         />
         <AboutSection />
+        <ClientsSection />
         <ServicesSection />
         <PortfolioSection />
         <ProcessSection />
