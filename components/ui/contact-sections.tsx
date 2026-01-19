@@ -59,7 +59,7 @@ export function ContactSection() {
   }
 
   return (
-    <section id="contact" className="py-24 bg-[#0a1628]">
+    <section id="contact" className="py-24 bg-[#181818]">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div ref={ref} className="max-w-6xl mx-auto">
           {/* Section Header */}
@@ -107,7 +107,7 @@ export function ContactSection() {
                       onChange={handleChange}
                       required
                       className={cn(
-                        "w-full px-4 py-2.5 rounded-lg border border-cyan-500/20 bg-[#0a1628] text-white",
+                        "w-full px-4 py-2.5 rounded-lg border border-cyan-500/20 bg-[#181818] text-white",
                         "focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50",
                         "placeholder:text-gray-500"
                       )}
@@ -129,7 +129,7 @@ export function ContactSection() {
                       onChange={handleChange}
                       required
                       className={cn(
-                        "w-full px-4 py-2.5 rounded-lg border border-cyan-500/20 bg-[#0a1628] text-white",
+                        "w-full px-4 py-2.5 rounded-lg border border-cyan-500/20 bg-[#181818] text-white",
                         "focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50",
                         "placeholder:text-gray-500"
                       )}
@@ -152,7 +152,7 @@ export function ContactSection() {
                     onChange={handleChange}
                     required
                     className={cn(
-                      "w-full px-4 py-2.5 rounded-lg border border-cyan-500/20 bg-[#0a1628] text-white",
+                      "w-full px-4 py-2.5 rounded-lg border border-cyan-500/20 bg-[#181818] text-white",
                       "focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50",
                       "placeholder:text-gray-500"
                     )}
@@ -174,7 +174,7 @@ export function ContactSection() {
                     required
                     rows={5}
                     className={cn(
-                      "w-full px-4 py-2.5 rounded-lg border border-cyan-500/20 bg-[#0a1628] text-white resize-none",
+                      "w-full px-4 py-2.5 rounded-lg border border-cyan-500/20 bg-[#181818] text-white resize-none",
                       "focus:outline-none focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500/50",
                       "placeholder:text-gray-500"
                     )}

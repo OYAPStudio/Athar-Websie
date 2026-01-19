@@ -36,7 +36,7 @@ export function AboutSection() {
     },
   };
   return (
-    <section id="about" className="py-8 px-4 bg-[#0a1628] dark:bg-[#0a1628]" ref={heroRef}>
+    <section id="about" className="py-8 px-4 bg-[#181818] dark:bg-[#181818]" ref={heroRef}>
       <div className="max-w-6xl mx-auto">
         <div className="relative">
           {/* Header */}

@@ -93,11 +93,11 @@ const ServiceCard = ({
       <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-transparent opacity-0 transition-opacity duration-300 hover:opacity-100" />
 
       <div className="h-full flex flex-col p-6 sm:p-8">
-        <div className="flex-1 w-full min-h-[160px] flex items-center justify-center relative overflow-hidden rounded-xl bg-[#0a1628]/50 border border-cyan-900/20 mb-6">
+        <div className="flex-1 w-full min-h-[160px] flex items-center justify-center relative overflow-hidden rounded-xl bg-[#181818]/50 border border-cyan-900/20 mb-6">
           {children}
         </div>
 
-        <div ref={contentRef} className="relative z-10 bg-[#0a1628]/80 backdrop-blur-md rounded-xl p-4 border border-cyan-900/20">
+        <div ref={contentRef} className="relative z-10 bg-[#181818]/80 backdrop-blur-md rounded-xl p-4 border border-cyan-900/20">
           <h3 className="text-xl font-semibold text-white mb-2 font-displace flex items-center gap-2">
             {title}
           </h3>
@@ -324,7 +324,7 @@ export function ServicesSection() {
   }, { scope: sectionRef })
 
   return (
-    <section ref={sectionRef} id="services" className="bg-[#0a1628] px-6 py-24 min-h-screen flex items-center justify-center relative overflow-hidden">
+    <section ref={sectionRef} id="services" className="bg-[#181818] px-6 py-24 min-h-screen flex items-center justify-center relative overflow-hidden">
       {/* Background Gradients */}
       <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-cyan-900/10 rounded-full blur-3xl -z-10" />
       <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-blue-900/10 rounded-full blur-3xl -z-10" />

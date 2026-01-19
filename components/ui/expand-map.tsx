@@ -60,7 +60,7 @@ export function LocationMap({
       onClick={handleClick}
     >
       <motion.div
-        className="relative overflow-hidden rounded-2xl bg-[#0a1628] border border-cyan-500/30"
+        className="relative overflow-hidden rounded-2xl bg-[#181818] border border-cyan-500/30"
         style={{
           rotateX: springRotateX,
           rotateY: springRotateY,

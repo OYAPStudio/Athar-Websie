@@ -24,7 +24,7 @@ const projects: Project[] = [
     image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&auto=format&fit=crop",
     icon: (
       <svg width="28px" height="28px" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M4 16V4H2V2h3a1 1 0 0 1 1 1v12h12.438l2-8H8V5h13.72a1 1 0 0 1 .97 1.243l-2.5 10a1 1 0 0 1-.97.757H5a1 1 0 0 1-1-1zm2 7a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm12 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"/>
+        <path d="M4 16V4H2V2h3a1 1 0 0 1 1 1v12h12.438l2-8H8V5h13.72a1 1 0 0 1 .97 1.243l-2.5 10a1 1 0 0 1-.97.757H5a1 1 0 0 1-1-1zm2 7a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm12 0a2 2 0 1 1 0-4 2 2 0 0 1 0 4z" />
       </svg>
     ),
   },
@@ -36,7 +36,7 @@ const projects: Project[] = [
     image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&auto=format&fit=crop",
     icon: (
       <svg width="28px" height="28px" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M8 3v2H6v4l-2 2v9h16v-9l-2-2V5h-2V3H8zm-3 9.41l2-2V5h6v5.41l2 2V19H5v-6.59zM11 11h2v3h3v2h-3v3h-2v-3H8v-2h3v-3z"/>
+        <path d="M8 3v2H6v4l-2 2v9h16v-9l-2-2V5h-2V3H8zm-3 9.41l2-2V5h6v5.41l2 2V19H5v-6.59zM11 11h2v3h3v2h-3v3h-2v-3H8v-2h3v-3z" />
       </svg>
     ),
   },
@@ -48,7 +48,7 @@ const projects: Project[] = [
     image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&auto=format&fit=crop",
     icon: (
       <svg width="28px" height="28px" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" />
       </svg>
     ),
   },
@@ -60,7 +60,7 @@ const projects: Project[] = [
     image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&auto=format&fit=crop",
     icon: (
       <svg width="28px" height="28px" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 1l9 4v6c0 5.55-3.84 10.74-9 12-5.16-1.26-9-6.45-9-12V5l9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/>
+        <path d="M12 1l9 4v6c0 5.55-3.84 10.74-9 12-5.16-1.26-9-6.45-9-12V5l9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z" />
       </svg>
     ),
   },
@@ -72,7 +72,7 @@ const projects: Project[] = [
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop",
     icon: (
       <svg width="28px" height="28px" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M3 3h18v18H3V3zm2 2v14h14V5H5zm2 2h2v10H7V7zm4 4h2v6h-2v-6zm4-2h2v8h-2V9z"/>
+        <path d="M3 3h18v18H3V3zm2 2v14h14V5H5zm2 2h2v10H7V7zm4 4h2v6h-2v-6zm4-2h2v8h-2V9z" />
       </svg>
     ),
   },
@@ -84,7 +84,7 @@ const projects: Project[] = [
     image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&auto=format&fit=crop",
     icon: (
       <svg width="28px" height="28px" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M17 7h-4V2H9v5H5l6 6 6-6zm-12 8v2h14v-2H5zm0 4v2h14v-2H5z"/>
+        <path d="M17 7h-4V2H9v5H5l6 6 6-6zm-12 8v2h14v-2H5zm0 4v2h14v-2H5z" />
       </svg>
     ),
   },
@@ -95,7 +95,7 @@ function ShowcaseCard({ project, index }: { project: Project; index: number }) {
 
   return (
     <motion.div
-      className="min-h-[380px] w-full max-w-[300px] bg-[#0a1628]/80 backdrop-blur-sm rounded-3xl shadow-[0_35px_60px_-15px_rgba(0,0,0,0.5)] flex flex-col p-2 gap-1 overflow-hidden border border-cyan-500/20 mx-auto"
+      className="min-h-[380px] w-full max-w-[300px] bg-[#181818]/80 backdrop-blur-sm rounded-3xl shadow-[0_35px_60px_-15px_rgba(0,0,0,0.5)] flex flex-col p-2 gap-1 overflow-hidden border border-cyan-500/20 mx-auto"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
@@ -136,7 +136,7 @@ function ShowcaseCard({ project, index }: { project: Project; index: number }) {
             width="18"
             height="18"
             fill="none"
-            stroke="#0a1628"
+            stroke="#181818"
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -166,7 +166,7 @@ function ShowcaseCard({ project, index }: { project: Project; index: number }) {
           <motion.div
             className="relative aspect-video rounded-2xl overflow-hidden"
             whileHover={{ scale: 1.03 }}
-            transition={{ type: "easeInOut" }}
+            transition={{ ease: "easeInOut" }}
           >
             <Image
               src={project.image}
@@ -208,7 +208,7 @@ export function PortfolioSection() {
   }
 
   return (
-    <section id="portfolio" className="py-24 bg-[#0a1628]">
+    <section id="portfolio" className="py-24 bg-[#181818]">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           {/* Section Header */}
@@ -263,11 +263,10 @@ export function PortfolioSection() {
                 <button
                   key={index}
                   onClick={() => setCurrentPage(index)}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    currentPage === index
-                      ? "w-8 bg-cyan-500"
-                      : "bg-cyan-500/30 hover:bg-cyan-500/50"
-                  }`}
+                  className={`w-2 h-2 rounded-full transition-all duration-300 ${currentPage === index
+                    ? "w-8 bg-cyan-500"
+                    : "bg-cyan-500/30 hover:bg-cyan-500/50"
+                    }`}
                 />
               ))}
             </div>
