@@ -77,10 +77,7 @@ type TimelineContentProps<T extends ElementType = "div"> = {
   as?: T
   animationNum: number
   timelineRef: RefObject<HTMLElement | null>
-  customVariants?: {
-    hidden: Variants["hidden"]
-    visible: (i: number) => Variants["visible"]
-  }
+  customVariants?: Variants
   className?: string
   children?: React.ReactNode
 } & Omit<ComponentPropsWithoutRef<T>, "as" | "animationNum" | "timelineRef" | "customVariants">
@@ -133,18 +130,6 @@ export function TimelineContent<T extends ElementType = "div">({
 }
 
 // Alternative simpler implementation that works better with different element types
-type TimelineContent2Props<T extends ElementType = "div"> = {
-  as?: T
-  animationNum: number
-  timelineRef: RefObject<HTMLElement | null>
-  customVariants?: {
-    hidden: Variants["hidden"]
-    visible: (i: number) => Variants["visible"]
-  }
-  className?: string
-  children?: React.ReactNode
-} & Omit<ComponentPropsWithoutRef<T>, "as" | "animationNum" | "timelineRef" | "customVariants">
-
 export const TimelineContentWrapper = motion.create("div")
 export const TimelineContentSpan = motion.create("span")
 export const TimelineContentFigure = motion.create("figure")
